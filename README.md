@@ -219,23 +219,3 @@ Expected perfect scores:
 | Cross correlation     | 1.0                |
 
 Any metric that does not return its perfect value indicates a bug in that metric's logic, not in the data.
-
----
-
-## What Was Replaced
-
-| Old                          | New                                      |
-|------------------------------|------------------------------------------|
-| `_read_trials_new()`         | `pd.read_hdf()` — data already in HDF5  |
-| `_infer_fs_hz()`             | `metadata["fs_hz"]`                     |
-| `_detect_pulse()`            | Not needed — patterns in trial_map.json |
-| `_detect_anywhere()`         | Not needed                               |
-| `_derive_meta()`             | Not needed — trial context in /data     |
-| `_concat_with_context()`     | Not needed — /data already concatenated |
-| `_pattern_counts()`          | `tmap["case"].value_counts()`           |
-| `_pattern_confusion()`       | Not needed — shared trial_map guarantees alignment |
-| `CANON_COLS`, `SPIKE_COLS`   | `get_spike_cols(cfg, data)`             |
-| `VM_COLS`, `VM_MAP`          | `get_vm_cols(cfg, scope=...)`           |
-| `INPUTS_MAP`, `OUTPUTS_MAP`  | `get_neurons(cfg, role=...)`            |
-| `METRIC_VARS_NEW` dict       | Direct HDF5 reads per metric            |
-| Entire preprocessing cell    | Deleted                                  |
