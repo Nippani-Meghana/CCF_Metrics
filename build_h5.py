@@ -1,3 +1,4 @@
+#build_h5.py
 
 import pandas as pd
 import h5py
@@ -192,15 +193,15 @@ class build_h5:
 
 if __name__ == "__main__":
     current_dir   = os.getcwd()
-    folder_dir    = os.path.join(current_dir, "output", "GT")
-    output_folder = os.path.join(current_dir, "output", "GT_h5")
+    folder_dir    = os.path.join(current_dir, "output", "xor", "SUB")
+    output_folder = os.path.join(current_dir, "output", "xor", "SUB_h5")
 
     converter = build_h5(
-        vm_csv       = os.path.join(folder_dir, "groundtruth-Vm.csv"),
-        spikes_csv   = os.path.join(folder_dir, "groundtruth-spikes.csv"),
+        vm_csv       = os.path.join(folder_dir, "sub-Vm.csv"),
+        spikes_csv   = os.path.join(folder_dir, "sub-spikes.csv"),
         net_con      = os.path.join(folder_dir, "network_config.json"),
         t_map        = os.path.join(folder_dir, "trial_map.json"),
-        h5_file_path = os.path.join(output_folder, "groundtruth.h5")
+        h5_file_path = os.path.join(output_folder, "sub.h5")
     )
 
     converter.build()
